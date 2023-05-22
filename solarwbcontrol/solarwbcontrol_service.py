@@ -8,7 +8,7 @@ import solarwbcontroller
 cycle_time = 5
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     # Tell systemd that our service is ready
     #systemd.daemon.notify('READY=1')
 
@@ -17,6 +17,6 @@ if __name__ == '__main__':
 
     mqtt_client.loop_start()
     while True:
-        logging.info("MQTT client connection: "+ str(mqtt_client.is_connected()))
+        logging.debug("MQTT client connection: "+ str(mqtt_client.is_connected()))
         controller.step()
         time.sleep(cycle_time)
